@@ -2,7 +2,7 @@
 
 This project is meant to showcase issues related to OpenNext on-demand revalidation issues.
 
-## Working D1 & Next.js 15 example
+## Not working D1 & Next.js 16 revalidateTag with stale-while-revalidate example
 
 ### Prerequisites
 
