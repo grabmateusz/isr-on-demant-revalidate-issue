@@ -37,36 +37,36 @@
 	"durable_objects": {
 		"bindings": [
 			{
-				"name": "NEXT_CACHE_DO_PURGE",
-				"class_name": "BucketCachePurge",
-			},
-			{
 				"name": "NEXT_CACHE_DO_QUEUE",
 				"class_name": "DOQueueHandler"
 			},
-			{
-				"name": "NEXT_TAG_CACHE_DO_SHARDED",
-				"class_name": "DOShardedTagCache"
-			}
 		],
 		"classes": [
-			"BucketCachePurge",
 			"DOQueueHandler",
-			"DOShardedTagCache"
 		]
 	},
 	"migrations": [
 		{
 			"tag": "v1",
 			"new_sqlite_classes": [
-				"BucketCachePurge",
 				"DOQueueHandler",
-				"DOShardedTagCache",
-
 			]
 		}
 	],
+	"d1_databases": [
+        {
+            "binding": "NEXT_TAG_CACHE_D1",
+            "database_id": "<isr-on-demant-revalidate-issue-database-id>",
+            "database_name": "isr-on-demant-revalidate-issue",
+        }
+    ],
 	"observability": {
 		"enabled": true
-	}
+	},
+	"routes": [
+		{
+			"pattern": "https://isr-on-demant-revalidate-issue.<zone-name>/*",
+			"zone_name": "<zone-name>"
+		}
+	]
 }
