@@ -2,68 +2,25 @@
  * For more details on how to configure Wrangler, refer to:
  * https://developers.cloudflare.com/workers/wrangler/configuration/
  */
-/**
- * For more details on how to configure Wrangler, refer to:
- * https://developers.cloudflare.com/workers/wrangler/configuration/
- */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
 	"name": "isr-on-demant-revalidate-issue",
-	"main": ".open-next/worker.js",
+	"main": "vinext/server/app-router-entry",
 	"compatibility_date": "2025-12-01",
 	"compatibility_flags": [
 		"nodejs_compat",
 		"global_fetch_strictly_public"
 	],
 	"assets": {
-		"binding": "ASSETS",
-		"directory": ".open-next/assets"
+		"binding": "ASSETS"
 	},
-	"images": {
-		"binding": "IMAGES"
+	"cache": {
+		"enabled": true
 	},
-	"r2_buckets": [
+	"kv_namespaces": [
 		{
-			"binding": "NEXT_INC_CACHE_R2_BUCKET",
-			"bucket_name": "isr-on-demant-revalidate-issue-r2"
-		}
-	],
-	"services": [
-		{
-			"binding": "WORKER_SELF_REFERENCE",
-			"service": "isr-on-demant-revalidate-issue"
-		}
-	],
-	"durable_objects": {
-		"bindings": [
-			{
-				"name": "NEXT_CACHE_DO_PURGE",
-				"class_name": "BucketCachePurge",
-			},
-			{
-				"name": "NEXT_CACHE_DO_QUEUE",
-				"class_name": "DOQueueHandler"
-			},
-			{
-				"name": "NEXT_TAG_CACHE_DO_SHARDED",
-				"class_name": "DOShardedTagCache"
-			}
-		],
-		"classes": [
-			"BucketCachePurge",
-			"DOQueueHandler",
-			"DOShardedTagCache"
-		]
-	},
-	"migrations": [
-		{
-			"tag": "v1",
-			"new_sqlite_classes": [
-				"BucketCachePurge",
-				"DOQueueHandler",
-				"DOShardedTagCache",
-
-			]
+			"binding": "VINEXT_KV_CACHE",
+			"id": "<your-kv-namespace-id>"
 		}
 	],
 	"observability": {
