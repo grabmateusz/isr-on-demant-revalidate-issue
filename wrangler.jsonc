@@ -8,7 +8,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "isr-on-demant-revalidate-issue",
+	"name": "isr-on-demand-revalidate-issue",
 	"main": ".open-next/worker.js",
 	"compatibility_date": "2025-12-01",
 	"compatibility_flags": [
@@ -25,13 +25,13 @@
 	"r2_buckets": [
 		{
 			"binding": "NEXT_INC_CACHE_R2_BUCKET",
-			"bucket_name": "isr-on-demant-revalidate-issue-r2"
+			"bucket_name": "isr-on-demand-revalidate-issue-r2"
 		}
 	],
 	"services": [
 		{
 			"binding": "WORKER_SELF_REFERENCE",
-			"service": "isr-on-demant-revalidate-issue"
+			"service": "isr-on-demand-revalidate-issue"
 		}
 	],
 	"durable_objects": {

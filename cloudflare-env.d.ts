@@ -4,7 +4,7 @@
 declare namespace Cloudflare {
 	interface Env {
 		NEXTJS_ENV: string;
-		WORKER_SELF_REFERENCE: Fetcher /* isr-on-demant-revalidate-issue */;
+		WORKER_SELF_REFERENCE: Fetcher /* isr-on-demand-revalidate-issue */;
 		IMAGES: ImagesBinding;
 		ASSETS: Fetcher;
 	}
