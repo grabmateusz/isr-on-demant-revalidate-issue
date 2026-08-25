@@ -10,12 +10,13 @@ export async function Timestamp() {
 }
 
 export type Timestamp = {
-    timestamp: number;
+    date_time: string;
 }
 
 async function fetchTimestamp(): Promise<number> {
-    const response = await fetch('https://aisenseapi.com/services/v1/timestamp', {
+    const response = await fetch('https://timeapi.io/api/v1/time/current/zone?timeZone=UTC', {
         next: {
+            revalidate: 60,
             tags: ['data-cache']
         }
     });
@@ -25,5 +26,5 @@ async function fetchTimestamp(): Promise<number> {
     }
     
     const data = await response.json() as Timestamp;
-    return data.timestamp;
+    return new Date(data.date_time).getTime() / 1000;
 }
